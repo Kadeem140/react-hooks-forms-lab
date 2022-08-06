@@ -1,15 +1,40 @@
-import React from "react";
+import React, {useState } from "react";
 
-function Filter({ onCategoryChange }) {
+function Filter({ handleCategoryChange }) {
+  // {/* capture input value in state */}
+  const [formValue, setFormValue ] = useState('');
+
+  function handleSubmit(event){
+    event.preventDefault();
+    console.log(formValue, "FORM VALUE FROM FILTER HANDLE SUBMIT!");
+
+    handleCategoryChange(formValue)
+
+  }
+    function handleFormChange(event){
+        setFormValue(event.target.value);
+    }
+
+   
   return (
     <div className="Filter">
-      <input type="text" name="search" placeholder="Search..." />
-      <select name="filter" onChange={onCategoryChange}>
-        <option value="All">Filter by category</option>
-        <option value="Produce">Produce</option>
-        <option value="Dairy">Dairy</option>
-        <option value="Dessert">Dessert</option>
-      </select>
+      <form onSubmit={handleSubmit}>
+        <input type="text" 
+                name="search" 
+                placeholder="Search..." 
+                value={formValue} 
+                onChange={handleFormChange} 
+                 />
+        <button type="submit">SUBMIT!</button>
+      </form>
+      {/* <div onSubmit={handleSubmit}> */}
+        <select name="filter" onChange={handleFormChange}>
+          <option value="All">Filter by category</option>
+          <option value="Produce">Produce</option>
+          <option value="Dairy">Dairy</option>
+          <option value="Dessert">Dessert</option>
+        </select>
+      {/* </div> */}
     </div>
   );
 }

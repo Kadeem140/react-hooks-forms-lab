@@ -22,6 +22,14 @@ of all the previous topics from this section, including initializing state,
 passing data and callback functions as props, and working with events.
 
 ## Deliverables
+<!-- 
+APP
+  |
+ShoppingList-------Header
+  |
+Itemform, Filter, Item 
+-->
+
 
 ### Filter
 
